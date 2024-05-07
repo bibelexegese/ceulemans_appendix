@@ -1,0 +1,449 @@
+---
+title: "The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset"
+author: "Reinhart Ceulemans"
+
+format: 
+    dashboard:
+        embed-resources: true
+        date-modified: 2024-05-29
+        doi: XXXX
+        urn: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
+        keywords: Catenae, Psalter
+        license: CC-BY
+        output-file: index
+        theme: cosmo
+        nav-buttons: 
+            - icon: book
+              href: ../index.html
+            - icon: github
+              href: https://github.com/bibelexegese/ceulemans_appendix
+---
+
+# Psalm verse
+
+## Row
+
+### Column {width=30%}
+::: {.card title="Select Psalm verse"}
+```{ojs}
+viewof all_ids = Inputs.select(data.map(d => d["Reference"]), {unique: true, multiple: true, value: ["Psalterium"]})
+
+viewof id_entry = Inputs.select(id_entry_id, {label: "Result no.", format: x => x+1})
+```
+:::
+
+
+### Column {width=70%}
+::: {.card title="Data"}
+
+ID of this entry:
+: ${id_id[id_entry]} (cite as “Ceulemans, *Hermeneia* ${id_id[id_entry]}”)
+
+Psalm verse (primary):
+: ${id_ref[id_entry]}
+
+Psalm verse (alternative):
+: ${id_secid[id_entry]}
+
+Text:
+: ${id_text[id_entry]}
+
+Attribution:
+: ${id_attrib[id_entry]}
+
+Tentative identification:
+: ${id_source[id_entry]}
+
+Publication:
+: Dorival, Chaînes ${id_mention[id_entry]}
+
+Publication of variant form:
+: ${id_variant[id_entry] ? "Dorival, Chaînes&nbsp;" + id_variant[id_entry]: id_variant[id_entry]}
+
+Further reference(s):
+: ${id_secvariant[id_entry] ? "Dorival, Chaînes&nbsp;" + id_secvariant[id_entry]: id_secvariant[id_entry]}
+:::
+
+
+```{ojs}
+//| output: false
+
+ids = data.map(d => d["Reference"]).filter(
+  (item, index, inputArray) =>
+    inputArray.indexOf(item) == index
+)
+
+all_ids_ref = data.filter(function(pls) {
+  return all_ids.includes(pls["Reference"]);
+  // matching funktioniert nicht
+})
+
+
+id_entry_id = all_ids_ref.keys()
+
+id_id = all_ids_ref.map(d => d["ID"])
+
+id_ref = all_ids_ref.map(d => d["Reference"])
+
+id_secid = all_ids_ref.map(d => d["Second Reference"])
+
+id_text = all_ids_ref.map(d => d["Text"])
+
+id_attrib = all_ids_ref.map(d => d["Attribution"])
+
+id_source = all_ids_ref.map(d => d["Possible Source"])
+
+id_mention = all_ids_ref.map(d => d["First mentioned"])
+
+id_variant = all_ids_ref.map(d => d["Variant"])
+
+id_secvariant = all_ids_ref.map(d => d["Second Variant"])
+
+```
+
+
+# Text
+
+## Row 
+
+### Column {width=20%}
+::: {.card title="Select Word"}
+```{ojs}
+function splitArrayValues(array) {
+  const wordsArray = [];
+
+  array.forEach(value => {
+    const regex = /[\",.“”«»><·()+\-!://?\[\]…0-9a-z]/g;
+
+    const words = value.toLowerCase().replace(regex,"").split(' ');
+
+    words.forEach(word => {
+      wordsArray.push(word.trim()); 
+    });
+  });
+  const uniqueArray = Array.from(new Set(wordsArray));
+  return uniqueArray;
+}
+
+newdata = splitArrayValues(data.map(d => d["Text"]))
+
+viewof all_texts = Inputs.select(newdata.sort((a, b) => a.localeCompare(b)), {unique: true,  multiple: false, value: "αἶνος"})
+
+viewof t_entry = Inputs.select(t_entry_id, {label: "Result no.", format: x => x+1})
+
+```
+:::
+
+### Column {width=50%}
+
+::: {.card title="Data"}
+
+ID of this entry:
+: ${t_id[t_entry]} (cite as “Ceulemans, *Hermeneia* ${t_id[t_entry]}”)
+
+Psalm verse (primary):
+: ${t_ref[t_entry]}
+
+Psalm verse (alternative):
+: ${t_secid[t_entry]}
+
+Text:
+: ${t_text[t_entry]}
+
+Attribution:
+: ${t_attrib[t_entry]}
+
+Tentative identification:
+: ${t_source[t_entry]}
+
+Publication:
+: Dorival, Chaînes ${t_mention[t_entry]}
+
+Publication of variant form:
+: ${t_variant[t_entry] ? "Dorival, Chaînes&nbsp;" + t_variant[t_entry]: t_variant[t_entry]}
+
+Further reference(s):
+: ${t_secvariant[t_entry] ? "Dorival, Chaînes&nbsp;" + t_secvariant[t_entry]: t_secvariant[t_entry]}
+:::
+
+
+
+```{ojs}
+//| output: false
+texts = data.map(d => d["Text"]).filter(
+  (item, index, inputArray) =>
+    inputArray.indexOf(item) == index
+)
+
+all_texts_ref = data.filter(function(pls) {
+  return pls["Text"].toLowerCase().includes(all_texts);
+})
+
+
+t_entry_id = all_texts_ref.keys()
+
+t_id = all_texts_ref.map(d => d["ID"])
+
+t_ref = all_texts_ref.map(d => d["Reference"])
+
+t_secid = all_texts_ref.map(d => d["Second Reference"])
+
+t_text = all_texts_ref.map(d => d["Text"])
+
+t_attrib = all_texts_ref.map(d => d["Attribution"])
+
+t_source = all_texts_ref.map(d => d["Possible Source"])
+
+t_mention = all_texts_ref.map(d => d["First mentioned"])
+
+t_variant = all_texts_ref.map(d => d["Variant"])
+
+t_secvariant = all_texts_ref.map(d => d["Second Variant"])
+```
+
+# Author
+
+## Row 
+
+### Column {width=20%}
+::: {.card title="Select Author"}
+```{ojs}
+function splitbycomma(array) {
+  const wordsArray = [];
+
+  array.forEach(value => {
+    const words = [];
+    if (value === null) {} else if (value.includes(",")) {words.push(value.split(","));} else if (value.includes("/")) {words.push(value.split("/"));} else if (value.includes(";")) {words.push(value.split(";"));} else {words.push(value);}
+
+    words.flat().forEach(word => {
+      wordsArray.push(word.trim()); 
+    });
+  });
+  const uniqueArray = Array.from(new Set(wordsArray));
+  return uniqueArray;
+}
+
+newauthor = splitbycomma(all_attrib)
+
+viewof attribution = Inputs.select(newauthor.sort((a, b) => a.localeCompare(b)), {multiple: false, value: "Hesychios"})
+
+viewof entry = Inputs.select(entry_id, {label: "Result no.", format: x => x+1})
+```
+:::
+
+
+### Column {width=50%}
+::: {.card title="Data"}
+
+ID of this entry:
+: ${id[entry]} (cite as “Ceulemans, *Hermeneia* ${id[entry]}”)
+
+Psalm verse (primary):
+: ${ref[entry]}
+
+Psalm verse (alternative):
+: ${secid[entry]}
+
+Text:
+: ${text[entry]}
+
+Attribution:
+: ${attrib[entry]}
+
+Tentative identification:
+: ${source[entry]}
+
+Publication:
+: Dorival, Chaînes ${mention[entry]}
+
+Publication of variant form:
+: ${variant[entry] ? "Dorival, Chaînes&nbsp;" + variant[entry]: variant[entry]}
+
+Further reference(s):
+: ${secvariant[entry] ? "Dorival, Chaînes&nbsp;" + secvariant[entry]: secvariant[entry]}
+:::
+
+
+
+
+```{ojs}
+//| output: false
+all_attrib = data.map(
+  (item) =>
+    item["Attribution"] || item["Possible Source"]
+)
+
+filtered_ref = data.filter(function(pls) {
+  if (pls["Attribution"]) {return pls["Attribution"].includes(attribution);}
+  else if (pls["Possible Source"]) {return pls["Possible Source"].includes(attribution);}
+})
+
+entry_id = filtered_ref.keys()
+
+id = filtered_ref.map(d => d["ID"])
+
+ref = filtered_ref.map(d => d["Reference"])
+
+secid = filtered_ref.map(d => d["Second Reference"])
+
+text = filtered_ref.map(d => d["Text"])
+
+attrib = filtered_ref.map(d => d["Attribution"])
+
+source = filtered_ref.map(d => d["Possible Source"])
+
+mention = filtered_ref.map(d => d["First mentioned"])
+
+variant = filtered_ref.map(d => d["Variant"])
+
+secvariant = filtered_ref.map(d => d["Second Variant"])
+```
+
+# Browse
+
+## Row {.tabset}
+
+### Search
+
+#### {width=20%}
+```{ojs}
+
+viewof search = Inputs.search(data, {
+  placeholder: "Search",
+  columns: ["ID","Reference","Second Reference","Text","Attribution","Possible Source","First mentioned","Variant","Second Variant"],
+})
+
+md`${rows.length} item(s) selected`
+```
+::: {.card title="How to browse this table"}
+You can do a simple full text search on the data. 
+
+If you hover your cursor over the table you can select rows by checking the boxes. 
+
+The results of the selection are shown in the “Results” tab left of the table.
+
+You can sort the columns by clicking on the bold header of a column.
+:::
+
+#### {width=80%}
+```{ojs}
+viewof rows = Inputs.table(search, {
+  rows: 250,
+  width: {
+    "ID": 50
+  },
+  align: {
+    "ID": "left"
+  },
+  header: {
+    "ID": "ID",
+    "Reference": "Psalm verse (primary)",
+    "Second Reference": "Psalm verse (alternative)",
+    "Text": "Text",
+    "Attribution": "Attribution",
+    "Possible Source": "Tentative identification",
+    "First mentioned": "Publication",
+    "Variant": "Publication of variant form",
+    "Second Variant": "Further reference(s)",
+  },
+  format: {
+    "ID": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Reference": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Second Reference": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Text": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Attribution": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Possible Source": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "First mentioned": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Variant": d => htl.html`<span style="white-space:normal">${d}</span>`,
+    "Second Variant": d => htl.html`<span style="white-space:normal">${d}</span>`,
+  },
+})
+data = FileAttachment("data/ceulemans_dataset.tsv").tsv({ typed: true })
+```
+
+### Results
+
+#### Column {width=25%}
+
+```{ojs}
+viewof r_entry = Inputs.select(r_entry_id, {label: "Result no.", format: x => x+1})
+```
+
+
+
+#### Column {width=25%}
+::: {.card title="Data"}
+
+ID:
+: ${r_id[r_entry]} (cite as “Ceulemans, *Hermeneia* ${r_id[r_entry]}”)
+
+Psalm verse (primary):
+: ${r_ref[r_entry]} 
+
+Psalm verse (alternative):
+: ${r_secid[r_entry]}
+
+Text:
+: ${r_text[r_entry]}
+
+Attribution:
+: ${r_attrib[r_entry]}
+
+Tentative identification:
+: ${r_source[r_entry]}
+
+Publication:
+: Dorival, Chaînes ${r_mention[r_entry]}
+
+Publication of variant form:
+: ${r_variant[r_entry] ? "Dorival, Chaînes&nbsp;" + r_variant[r_entry]: r_variant[r_entry]}
+
+Further reference(s):
+: ${r_secvariant[r_entry] ? "Dorival, Chaînes&nbsp;" + r_secvariant[r_entry]: r_secvariant[r_entry]}
+:::
+
+```{ojs}
+//| output: false
+
+r_entry_id = rows.keys()
+
+r_id = rows.map(d => d["ID"])
+
+r_ref = rows.map(d => d["Reference"])
+
+r_secid = rows.map(d => d["Second Reference"])
+
+r_text = rows.map(d => d["Text"])
+
+r_attrib = rows.map(d => d["Attribution"])
+
+r_source = rows.map(d => d["Possible Source"])
+
+r_mention = rows.map(d => d["First mentioned"])
+
+r_variant = rows.map(d => d["Variant"])
+
+r_secvariant = rows.map(d => d["Second Variant"])
+```
+# About
+
+::: {.card}
+This is the dataset to Reinhart Ceulemans, “The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018),” in *Research on Psalter Catenae: Current Trends and Recent Developments* (ed. Cordula Bandt and Reinhart Ceulemans; TU 197; Berlin/Boston 2024), 277–285.
+
+This is a beta-version. The correct version will go online early August 2024. Please contact <reinhart.ceulemans@kuleuven.be>.
+
+The source code of this website and the dataset used is at <https://github.com/bibelexegese/ceulemans_appendix> [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX).
+
+## Cite as
+Reinhart Ceulemans, The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset, v0.1 (beta), 2024, <https://nbn-resolving.org/urn:nbn:de:kobv:b4-20240508094043722-4354412-8>.
+
+:::
+
+
+::: {.card}
+## Rights
+All data is available under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
+## Technical Implementation
+[Annette von Stockhausen](mailto:annette.von_stockhausen@bbaw.de) with the help of [Quarto](https://quarto.org/). The web service is provided and maintained by [TELOTA - IT/DH](https://www.bbaw.de/bbaw-digital/telota).
+:::

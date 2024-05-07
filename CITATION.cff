@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+title: >-
+  The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset
+message: >-
+  If you use this dataset, please cite it using the
+  metadata from this file.
+type: dataset
+version: "0.1 (beta)"
+keywords: 
+  - Catenae
+  - Psalter
+identifiers:
+  - description: This is the source code of the website and the dataset
+    type: doi
+    value: 10.5281/zenodo.XXXX
+  - description: This is website using the dataset
+    type: urn
+    value: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
+date-released: 2024-05-29
+license: CC-BY
+authors:
+  - given-names: Reinhart
+    family-names: Ceulemans
+    email: reinhart.ceulemans@kuleuven.be
+    affiliation: >-
+      KU Leuven
+    orcid: 'http://orcid.org/0000-0003-0552-7074'
+references:
+  - authors:
+      - family-names: Dorival
+        given-names: Gilles
+    title: "Les chaînes exégétiques grecques sur les Psaumes: contribution à l'étude d'une forme littéraire (Vol. 1-5)"
+    type: book
+    year: 1986–2018
+preferred-citation:
+  authors:
+    - given-names: Reinhart
+      family-names: Ceulemans
+  title: >-
+    The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset
+  type: dataset
+  version: "0.1 (beta)"
+  year: 2024
+  identifiers:
+  - type: urn
+    value: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
+
