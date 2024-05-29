@@ -2,7 +2,7 @@
 
 This is a beta-version. The correct version will go online early August 2024. Please contact <reinhart.ceulemans@kuleuven.be>.
 
-This repository is archived at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+This repository is archived at [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11384542.svg)](https://doi.org/10.5281/zenodo.11384542)
 
 This is the dataset to Reinhart Ceulemans, “The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018),” in *Research on Psalter Catenae: Current Trends and Recent Developments* (ed. Cordula Bandt and Reinhart Ceulemans; TU 197; Berlin/Boston 2024), 277–285.
 

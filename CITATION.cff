@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 title: >-
-  The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset
+  The hermēneiai published in Les chaînes exégétiques grecques sur les Psaumes (1986–2018) – Dataset
 message: >-
   If you use this dataset, please cite it using the
   metadata from this file.
@@ -12,7 +12,7 @@ keywords:
 identifiers:
   - description: This is the source code of the website and the dataset
     type: doi
-    value: 10.5281/zenodo.XXXX
+    value: 10.5281/zenodo.11384542
   - description: This is website using the dataset
     type: urn
     value: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
@@ -37,7 +37,7 @@ preferred-citation:
     - given-names: Reinhart
       family-names: Ceulemans
   title: >-
-    The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset
+    The hermēneiai published in Les chaînes exégétiques grecques sur les Psaumes (1986–2018) – Dataset
   type: dataset
   version: "0.1 (beta)"
   year: 2024

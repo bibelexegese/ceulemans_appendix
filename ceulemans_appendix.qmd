@@ -6,7 +6,7 @@ format:
     dashboard:
         embed-resources: true
         date-modified: 2024-05-29
-        doi: XXXX
+        doi: 10.5281/zenodo.11384542
         urn: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
         keywords: Catenae, Psalter
         license: CC-BY
@@ -432,7 +432,7 @@ This is the dataset to Reinhart Ceulemans, “The *hermēneiai* published in *Le
 
 This is a beta-version. The correct version will go online early August 2024. Please contact <reinhart.ceulemans@kuleuven.be>.
 
-The source code of this website and the dataset used is at <https://github.com/bibelexegese/ceulemans_appendix> [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX).
+The source code of this website and the dataset used is at <https://github.com/bibelexegese/ceulemans_appendix> [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.11384542.svg)](https://doi.org/10.5281/zenodo.11384542).
 
 ## Cite as
 Reinhart Ceulemans, The *hermēneiai* published in *Les chaînes exégétiques grecques sur les Psaumes* (1986–2018) – Dataset, v0.1 (beta), 2024, <https://nbn-resolving.org/urn:nbn:de:kobv:b4-20240508094043722-4354412-8>.
