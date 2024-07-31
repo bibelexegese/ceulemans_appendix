@@ -5,7 +5,7 @@ message: >-
   If you use this dataset, please cite it using the
   metadata from this file.
 type: dataset
-version: "0.1 (beta)"
+version: "1.0"
 keywords: 
   - Catenae
   - Psalter
@@ -14,17 +14,17 @@ identifiers:
     type: doi
     value: 10.5281/zenodo.11384542
   - description: This is website using the dataset
-    type: urn
-    value: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
-date-released: 2024-05-29
-license: CC-BY
+    type: url
+    value: https://nbn-resolving.org/urn:nbn:de:kobv:b4-20240508094043722-4354412-8
+date-released: 2024-07-31
+license: CC-BY-4.0
 authors:
   - given-names: Reinhart
     family-names: Ceulemans
     email: reinhart.ceulemans@kuleuven.be
     affiliation: >-
       KU Leuven
-    orcid: 'http://orcid.org/0000-0003-0552-7074'
+    orcid: 'https://orcid.org/0000-0003-0552-7074'
 references:
   - authors:
       - family-names: Dorival
@@ -38,10 +38,10 @@ preferred-citation:
       family-names: Ceulemans
   title: >-
     The hermēneiai published in Les chaînes exégétiques grecques sur les Psaumes (1986–2018) – Dataset
-  type: dataset
-  version: "0.1 (beta)"
+  type: data
+  version: "1.0"
   year: 2024
   identifiers:
-  - type: urn
-    value: urn:nbn:de:kobv:b4-20240508094043722-4354412-8
+  - type: url
+    value: https://nbn-resolving.org/urn:nbn:de:kobv:b4-20240508094043722-4354412-8
 
