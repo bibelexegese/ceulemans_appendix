@@ -268,14 +268,38 @@ Further reference(s):
 
 ```{ojs}
 //| output: false
-all_attrib = data.map(
-  (item) =>
-    item["Attribution"] || item["Possible Source"]
-)
+all_attrib = data.map(row => {
+  const attribution = row.Attribution || '';
+  const possibleSource = row["Possible Source"] || '';
+  if (attribution) {
+    return attribution + (possibleSource ? `,${possibleSource}` : '');
+  } else if (possibleSource) {
+    return `${possibleSource}`;
+  }
+  }).filter(Boolean);
 
-filtered_ref  = data.filter((pls)  => {
-  if (pls["Attribution"] === attribution || pls["Possible Source"] === attribution) return true;
-})
+filtered_ref = data.filter((pls) => {
+  let attributionMatch = false;
+  let possibleSourceMatch = false;
+
+  if (pls["Attribution"] !== null && pls["Attribution"] !== undefined) {
+    if (pls["Attribution"].includes(",")) {
+      attributionMatch = pls["Attribution"].split(",").some(word => word.trim() === attribution);
+    } else {
+      attributionMatch = pls["Attribution"].trim() === attribution;
+    }
+  }
+
+  if (pls["Possible Source"] !== null && pls["Possible Source"] !== undefined) {
+    if (pls["Possible Source"].includes(",")) {
+      possibleSourceMatch = pls["Possible Source"].split(",").some(source => source.trim() === attribution);
+    } else {
+      possibleSourceMatch = pls["Possible Source"].trim() === attribution;
+    }
+  }
+
+  return attributionMatch || possibleSourceMatch;
+});
 
 
 entry_id = filtered_ref.keys()
